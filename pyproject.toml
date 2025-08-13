@@ -1,0 +1,29 @@
+# pyproject.toml
+[tool.poetry]
+name = "test-project-template"
+version = "1.0.0"
+description = "Template cab be used for creating new test projects as well as base for test automation learning"
+authors = ["Oleksii Ostapov <oleksii.ostapov@infopulse.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "--base-url https://coffee-cart.app/"
+testpaths = [
+    "tests",
+]
+pythonpath = [
+  "."
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+playwright = "^1.43.0"
+pytest = "^8.1.1"
+pytest-playwright = "^0.4.4"
+pytest-xdist = "^3.5.0"
+pytest-dotenv = "^0.5.2"
+pytestomatio = "^2.5.3"
+pytest-json-ctrf = "^0.2.3"
+
