@@ -1,4 +1,4 @@
-name: Playwright Tests (Python)
+name: Playwright Tests (Python + Poetry)
 
 on:
   push:
@@ -30,17 +30,21 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Poetry
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          playwright install --with-deps
+          pip install poetry
+
+      - name: Install dependencies via Poetry
+        run: |
+          poetry install --no-interaction --no-root
+          poetry run playwright install --with-deps
 
       - name: Run Playwright tests
         env:
           BROWSER: ${{ github.event.inputs.browser }}
         run: |
-          pytest --browser $BROWSER --headed --maxfail=1 --disable-warnings -q
+          poetry run pytest --browser $BROWSER --headed --maxfail=1 --disable-warnings -q
 
       - name: Upload Playwright test report
         if: always()
