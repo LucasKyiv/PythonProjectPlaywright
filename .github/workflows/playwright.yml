@@ -44,7 +44,7 @@ jobs:
         env:
           BROWSER: ${{ github.event.inputs.browser || 'chromium' }}
         run: |
-          poetry run pytest --browser $BROWSER --headed --maxfail=1 --disable-warnings -q
+          poetry run pytest --browser $BROWSER --maxfail=1 --disable-warnings -q
 
       - name: Upload Playwright test report
         if: always()
