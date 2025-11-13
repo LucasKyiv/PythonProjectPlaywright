@@ -47,9 +47,9 @@ jobs:
           poetry run pytest --browser $BROWSER --maxfail=1 --disable-warnings -q
 
       - name: Upload debug artifacts
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
           name: debug-artifacts
           path: |
               debug_screenshot.png
