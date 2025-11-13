@@ -6,7 +6,7 @@ from playwright.sync_api import expect, Page
 
 def test_google_search(page: Page):
     page.goto('https://www.google.com/ncr')
-    page.locator("//div[text()='Accept all']").click()
+    page.locator("button:has-text('Accept')").click()
     page.get_by_role("combobox").fill("OpenAI")
     time.sleep(2)
     page.keyboard.press("Escape")
